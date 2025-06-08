@@ -3,6 +3,7 @@ import { WebPDFLoader } from "@langchain/community/document_loaders/web/pdf";
 import { inngest } from "@/inngest/client";
 import axios from "axios";
 import { currentUser } from '@clerk/nextjs/server'
+import { getRuns } from "@/lib/inngest";
 
 export async function POST(req: NextRequest) {
        const FormData = await req.formData();
@@ -72,21 +73,21 @@ export async function POST(req: NextRequest) {
        }
 }
 
-export async function getRuns(runId: string) {
-       try {
-              const result = await axios.get(`${process.env.INNGEST_SERVER_HOST}/v1/events/${runId}/runs`, {
-                     headers: {
-                            Authorization: `Bearer ${process.env.INNGEST_SIGNING_KEY}`
-                     }
-              });
+// export async function getRuns(runId: string) {
+//        try {
+//               const result = await axios.get(`${process.env.INNGEST_SERVER_HOST}/v1/events/${runId}/runs`, {
+//                      headers: {
+//                             Authorization: `Bearer ${process.env.INNGEST_SIGNING_KEY}`
+//                      }
+//               });
 
-              if (result.status !== 200) {
-                     throw new Error(`Unexpected status code: ${result.status}`);
-              }
+//               if (result.status !== 200) {
+//                      throw new Error(`Unexpected status code: ${result.status}`);
+//               }
 
-              return result.data;
-       } catch (error) {
-              console.error('Error fetching run status:', error);
-              throw new Error('Failed to fetch run status');
-       }
-}
+//               return result.data;
+//        } catch (error) {
+//               console.error('Error fetching run status:', error);
+//               throw new Error('Failed to fetch run status');
+//        }
+// }
