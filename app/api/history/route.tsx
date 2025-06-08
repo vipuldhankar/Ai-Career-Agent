@@ -47,18 +47,29 @@ export async function GET(req: any) {
 
   try {
     if (recordId) {
+
+
       const result = await db.select().from(HistoryTable)
         .where(eq(HistoryTable.recordId, recordId));
       return NextResponse.json(result[0]);
+
+
+
     } else {
       //@ts-ignore
-      const result = await db.select().from(HistoryTable)
-        .where(eq(HistoryTable.userEmail, user?.primaryEmailAddress?.emailAddress))
-        .orderBy(desc(HistoryTable.id));
+      const email = user?.primaryEmailAddress?.emailAddress;
+      if (!email) {
+        return NextResponse.json([]); // or handle no-user case as you like
+      }
 
+      const result = await db.select().from(HistoryTable)
+        .where(eq(HistoryTable.userEmail, email))
+        .orderBy(desc(HistoryTable.id));
       return NextResponse.json(result);
+
+
     }
-    return NextResponse.json({});
+
   } catch (e) {
     return NextResponse.json(e);
   }
