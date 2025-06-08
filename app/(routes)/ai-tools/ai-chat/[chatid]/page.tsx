@@ -17,7 +17,8 @@ type messages = {
 
 
 function AiChat() {
-       const [userInput, setuserInput] = useState<string>()
+       const [userInput, setuserInput] = useState<string>('');
+
        const id=uuidv4();
 
 
