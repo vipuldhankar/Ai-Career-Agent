@@ -11,35 +11,35 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Layers, Inbox, Wallet, UserCircle } from "lucide-react"
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const items = [
     {
-        title: "Home",
-        url: "#",
-        icon: Home,
+        title: "Workspace",
+        url: "/dashboard",
+        icon: Layers,
     },
     {
-        title: "Inbox",
-        url: "#",
+        title: "AI Tools",
+        url: "/ai-tools",
         icon: Inbox,
     },
     {
-        title: "Calendar",
-        url: "#",
+        title: "My History",
+        url: "/my-history",
         icon: Calendar,
     },
     {
-        title: "Search",
-        url: "#",
-        icon: Search,
+        title: "Billing",
+        url: "/billing",
+        icon: Wallet,
     },
     {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
+        title: "Profile",
+        url: "/profile",
+        icon: UserCircle,
     },
 ]
 
@@ -49,21 +49,21 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarHeader>
                 <div className='p-4'>
-                    <Image src={'./logo.svg'} alt='logo' width={100} height={100}
-                        className='w-full h-full' />
-                    <h2 className='text-sm text-gray-400 text-center'>Build Awesome</h2>
+                    <Image src={'/logo.png'} alt='logo' width={100} height={70}
+                        className='w-full' />
+                    <h2 className='text-sm text-gray-400 text-center mt-3'>Build Awesome Skills</h2>
                 </div>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
 
                     <SidebarGroupContent>
-                        <SidebarMenu className='mt-5'>
+                        <SidebarMenu className='mt-2'>
                             {items.map((item, index) => (
                                 // <SidebarMenuItem key={item.title} className='p-2'>
                                 //     <SidebarMenuButton asChild className=''>
                                 <a href={item.url} key={index} className={`p-2 text-lg flex gap-2 items-center
-                                 hover:bg-gray-100 rounded-lg ${path.includes(item.url) && 'bg-gray-200ß'}`}>
+                                 hover:bg-gray-100 rounded-lg ${path.includes(item.url) && 'bg-gray-200'}`}>
                                     <item.icon className='h-5 w-5' />
                                     <span>{item.title}</span>
                                 </a>
@@ -75,7 +75,7 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <h2 className='p-2 text-gray-400 text-sm'>Copyright @Tubeguruji</h2>
+                <h2 className='p-2 text-gray-400 text-sm'>Copyright @VKT</h2>
             </SidebarFooter>
         </Sidebar>
     )
