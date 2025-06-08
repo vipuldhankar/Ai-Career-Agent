@@ -39,8 +39,8 @@ function RoadmapCanvas({ initialNodes = [], initialEdges = [] }: any) {
        const spacedNodes = initialNodes.map((node: any) => ({
               ...node,
               position: {
-                     x: node.position.x * 2.0, // Wider horizontal spacing
-                     y: node.position.y * 2.5, // Taller vertical spacing
+                     x: node.position.x * 1.5, // Wider horizontal spacing
+                     y: node.position.y * 1.5, // Taller vertical spacing
               },
        }));
 
