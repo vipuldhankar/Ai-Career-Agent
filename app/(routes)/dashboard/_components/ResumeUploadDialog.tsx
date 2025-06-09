@@ -162,7 +162,7 @@ function ResumeUploadDialog({ openResumeUpload, setopenResumeUpload }: any) {
                             const userHistoryEntries = historyList.filter((item: any) => item.userEmail === userEmail);
 
                             // If the user has 5 or more entries, redirect them to the billing page
-                            if (userHistoryEntries.length >= 3) {
+                            if (userHistoryEntries.length >= 5) {
                                    console.log("User has exceeded the 3-entry limit, redirecting to billing...");
                                    router.push('/billing');
                                    return;
